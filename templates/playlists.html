@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1 style="text-align: center;">See all the playlists!</h1>
+    <br><br>
+
+    <ul class="list-group">
+      {% for playlist in playlists %}
+        <li class="list-group-item">
+          <a href="/playlists/{{ playlist.id }}">{{ playlist.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+
+  </div>
+  <br><br>
+  <div class="text-center">
+<p><a class="btn btn-primary" href="/playlists/add" >Add a playlist</a></p>
+</div>
+
+</body>
+
+</html>

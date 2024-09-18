@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ALBUMS</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>See all the Albums!</h1>
+
+    <ul class="list-group">
+      {% for album in albums %}
+        <li class="list-group-item">
+          <a href="/albums/{{ album.id }}">{{ album.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+
+  </div>
+  <p><a class="btn btn-primary" href="/albums/add" style="display: block; margin: 0 auto;">Add an album</a></p>
+
+</body>
+
+</html>

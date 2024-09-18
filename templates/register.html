@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <!-- Add Bootstrap CSS link here -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="bg-light d-flex align-items-center justify-content-center vh-100">
+    <div class="container text-center">
+        <h1 class="mb-4">Registration Page</h1>
+
+        <form method="POST" action="{{ url_for('register') }}" class="mb-4">
+            {{ form.hidden_tag() }}
+
+            <div class="form-group">
+                <label for="id">User ID:</label>
+                {{ form.id(class="form-control") }}
+            </div>
+
+            <div class="form-group">
+                <label for="username">Username:</label>
+                {{ form.username(class="form-control") }}
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                {{ form.email(class="form-control") }}
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                {{ form.password(class="form-control") }}
+            </div>
+
+            <div class="form-group">
+                <label for="role">Select Role:</label>
+                {{ form.role(class="form-control") }}
+            </div>
+
+            {{ form.submit(class="btn btn-primary btn-block") }}
+        </form>
+
+        <p class="lead"><a href="{{ url_for('user_login') }}">Already have an account? Login here.</a></p>
+    </div>
+
+    <!-- Add Bootstrap JS and other dependencies here if needed -->
+    <!-- Bootstrap JS is required for certain features like dropdowns -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

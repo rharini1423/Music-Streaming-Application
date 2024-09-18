@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/6ec9c7cfba.js"
+    crossorigin="anonymous">
+</script>
+</head>
+<body>
+    
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col text-right">
+                <a href="{{ url_for('user_dashboard') }}" style="color: black; text-decoration: none;">
+                    <p>
+                    <i class="fa fa-user-circle-o" style="font-size:30px;"></i>
+                </p></a>
+            </div>
+        </div>
+        </div>
+    <div class="container mt-5">
+        <form action="{{ url_for('user_search') }}" method="GET">
+            <h1 class="mb-3">Search Songs</h1>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="search-box" placeholder="Search by Song Title, Ratings, Genre" name="queries">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" id="search-button">Search Songs</button>
+                </div>
+            </div>
+        </form>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Song ID</th>
+                    <th>Song Title</th>
+                    <th>Artist</th>
+                </tr>
+            </thead>
+            <tbody id="song-list">
+                {% for result in results %}
+                <tr>
+                    <td>{{result.id}}</td>
+                    <td><a href="/songs/{{ result.id }}">{{result.title}}</a></td>
+                    <td>{{result.artist.username}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <form action="{{ url_for('user_album_search') }}" method="GET">
+            <h1 class="mb-3">Search Albums</h1>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="search-box-album" placeholder="Search by Album Title, Genre" name="queries1">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" id="search-button-album">Search Albums</button>
+                </div>
+            </div>
+        </form>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Album ID</th>
+                    <th>Album Title</th>
+                    <th>Genre</th>
+                    <th>Creator</th>
+                </tr>
+            </thead>
+            <tbody id="album-list">
+                {% for albumresult in album_results %}
+                <tr>
+                    <td>{{albumresult.id}}</td>
+                    <td> <a href="/albums/{{ albumresult.id }}">{{albumresult.title}}</a></td>
+                    <td>{{albumresult.genre}}</td>
+                    <td>{{albumresult.created_by}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

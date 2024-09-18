@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Add custom CSS for the song list container */
+        .song-list-container {
+            overflow-x: scroll;
+            white-space: nowrap;
+        }
+        /* Style for each song card */
+        .song-card {
+            display: inline-block;
+            width: 200px; /* Set your desired width */
+            margin-right: 20px; /* Adjust as needed */
+        }
+        
+    </style>
+     <script src="https://kit.fontawesome.com/6ec9c7cfba.js"
+            crossorigin="anonymous">
+    </script>
+</head>
+<body>
+    <!-- Create a Bootstrap navigation bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">User Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="playlists">Playlists</a>
+                </li>
+           
+            </ul>
+            <form method="POST" action="{{ url_for('register_as_creator') }}">
+                
+                <button type="submit" class="btn btn-success">Register as Creator</button>
+            </form>
+        </div>
+  
+        <a href="user_search" style="color: whitesmoke; text-decoration: none;margin-right: 10px;">
+            <p>
+            <i class="fas fa-search" style="font-size:30px;"></i>
+        </p></a>
+
+        <a href="{{ url_for('user_profile', user_id=user_id) }}" style="color: whitesmoke; text-decoration: none;margin-left: 10px;">
+            <p>
+            <i class="fa fa-user-circle-o" style="font-size:30px;"></i>
+        </p></a>
+    </nav>
+
+    <div class="container mt-4">
+        <h1>Welcome to the User Dashboard</h1>
+        <div class="song-list-container">
+            {% for song in songs %}
+            <div class="song-card">
+                <div class="card">
+                    {% if song.song_picture %}
+                    <img src="{{ url_for('static',filename='images/'+song.song_picture) }}" width="200" class="card-img-top" alt="{{ song.title }}">
+                    {% else %} 
+                    <img src="{{ url_for('static',filename='images/default.png')}}" width="200" class="card-img-top" alt="{{ song.title }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/songs/{{song.id}}">{{ song.title }}</a></h5>
+                        <p class="card-text">Artist: {{ song.artist.username }}</p>
+                        <form method="POST" action="{{ url_for('create_playlist') }}">
+                            <button type="submit" class="btn btn-primary"><span class="bi-music-note-list"></span> add to playlist</button>
+                        </form>
+                        <p>Feel the vibes <br>
+                            This song is rated a solid <br>
+                            {{ song.average_rating() }} stars</p>
+                        <p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <h1>Playlists</h1>
+        <div class="song-list-container">
+            {% for playlist in playlists %}
+            <div class="song-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/playlists/{{ playlist.id }}">{{ playlist.title }}</a></h5>
+                        <p class="card-text">Description: {{ playlist.description }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <h1>Albums</h1>
+        <div class="song-list-container">
+            {% for album in albums %}
+            <div class="song-card">
+                <div class="card w-100">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/albums/{{ album.id }}">{{ album.title }}</a></h5>
+                        <p class="card-text">Genre: {{ album.genre }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

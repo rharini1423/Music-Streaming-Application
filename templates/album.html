@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>album</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/6ec9c7cfba.js"
+    crossorigin="anonymous">
+</script>
+</head>
+
+<body>
+    <div class="jumbotron">
+        <h1>{{ album.title }}!</h1>
+        <p class="lead">&ndash; {{ album.created_by }}</p>
+        <div class="container mt-5">
+          <div class="row">
+              <div class="col text-right">
+                  <a href="{{ url_for('creator_page') }}" style="color: black; text-decoration: none;">
+                      <p>
+                      <i class="fa fa-user-circle-o" style="font-size:30px;"></i>
+                  </p></a>
+              </div>
+          </div>
+          </div>
+    </div>
+
+    {% if user.creator %}
+  
+    <div class="text-center">
+        <p>
+            <a class="btn btn-primary" href="/albums/{{ album.id }}/add_song">
+                Add Song To Album
+            </a>
+        </p>
+    </div>
+{% endif %}
+
+
+    <br><br>
+    
+
+    <div class="container">
+        <h1 style="text-align: center;">See all the Songs in the Album!</h1>
+        <ul class="list-group">
+          {% for song in songs_details %}
+            <li class="list-group-item">
+              <a href="/songs/{{ song.id }}">{{ song.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+    
+      </div>
+
+
+
+
+</body>
+
+</html>

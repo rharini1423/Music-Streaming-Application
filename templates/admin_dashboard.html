@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <br><br>
+    <h1 class="text-center">Welcome to the Admin Dashboard</h1>
+    <br><br>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Admin Dashboard</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+              <li class="nav-item active">
+                  <a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="tracks">Tracks</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="blacklist">Creators</a>
+              </li>
+          </ul>
+      </div>
+  </nav>
+    <div class="container mt-5">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="bg-light text-dark p-3 text-center">
+                        <img src="static\images\user-icon.jpg" alt="Image 1" class="img-fluid mb-3">
+                        Total Users: {{ total_users-1 }}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="bg-light text-dark p-3 text-center">
+                        <img src="static\images\artist-icon.jpg" alt="Image 2" class="img-fluid mb-3">
+                        Total Creators: {{ creator_users }}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="bg-light text-dark p-3 text-center">
+                        <img src="static\images\album art final.jpeg" alt="Image 3" class="img-fluid mb-3">
+                        Total Albums: {{ total_albums }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="mt-5">
+            <h3 class="text-center">Rating Graph</h3>
+            <div id="plotly-rating-graph">{{ rating_graph|safe }}</div>
+        </div>
+
+        <div class="mt-5">
+            <h3 class="text-center">Creator Graph</h3>
+            <div id="plotly-creator-graph">{{ creator_graph|safe }}</div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

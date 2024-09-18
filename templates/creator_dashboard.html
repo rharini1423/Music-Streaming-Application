@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creator Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+<body>
+
+    <h1 class="text-center">DASHBOARD</h1>
+    <br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="bg-primary text-white p-3 text-center">Total Songs Uploaded:
+                    <br>
+                    {{songs_count}} 
+                    <br>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="bg-secondary text-white p-3 text-center">Total Albums Uploaded:
+                    <br>
+                    {{albums}}
+                    <br>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="bg-success text-white p-3 text-center">Average Rating:
+                    <br>
+                   {{avg_rating}}
+                   <br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br> <br>
+    <h1 class="text-center">YOUR UPLOADS</h1>
+    <br>
+    
+    <div class="container">
+        <div class="text-info">
+            <ul class="list-group">
+                {% for song in songs %}
+                <li class="list-group-item"><a href="/songs/{{ song.id }}">{{ song.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

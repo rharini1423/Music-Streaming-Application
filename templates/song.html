@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Add Bootstrap CSS link here if not already included -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="jumbotron">
+        <h1>{{ song.title }}!</h1>
+        <p class="lead">&ndash; {{ song.artist.username }}</p>
+        <audio controls>
+            <source src="{{ url_for('static',filename='audio/'+song.audio_file) }}" type="audio/mp3">
+        </audio>
+    </div>
+
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+          <div class="col-md-8">
+              <div class="card">
+                  <div class="card-body">
+                      <!-- Assuming you have a variable named 'song' containing the Song model instance -->
+                      <h1 class="card-title">{{ song.title }} Lyrics</h1>
+                      <div class="mt-10">
+                        <form action="/songs/{{song.id}}/rate" method="post">
+                            <label for="rating">Like this song? Rate :</label></p>
+                            <input type="number" name="rating" min="1" max="5" required>
+                            <button type="submit">Rate</button>
+                        </form>
+                      </div>
+                      <p class="card-text text-justify">
+                          <pre>{{ song.lyrics | safe }}</pre>
+                      </p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+</body>
+
+</html>

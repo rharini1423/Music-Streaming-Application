@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Add Bootstrap CSS link here if not already included -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/6ec9c7cfba.js"
+    crossorigin="anonymous">
+</script>
+</head>
+
+<body>
+    <div class="jumbotron">
+        <h1>{{ playlist.title }}!</h1>
+        {% if playlist.description %}
+            <p class="lead">{{ playlist.description }}</p>
+        {% endif %}
+        <a href="{{ url_for('user_dashboard') }}" style="color: black; text-decoration: none;">
+            <p>
+            <i class="fa fa-user-circle-o" style="font-size:30px;"></i>
+        </p></a>
+    </div>
+
+    <div class="container">
+        <h1 style="text-align: center;">See all the Songs in the Playlist!</h1>
+        <ul class="list-group">
+            {% for song in songs %}
+            <li class="list-group-item">
+              <a href="/songs/{{ song.id }}">{{ song.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+    
+      </div>
+
+<div class = "text-center">
+    <p>
+        <a class="btn btn-primary" href="/playlists/{{ playlist.id }}/add_song">
+            Add Song To Playlist
+        </a>
+    </p>
+</div>
+</body>
+
+</html>

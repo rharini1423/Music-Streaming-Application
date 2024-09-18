@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Add New Song</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Add New Song</h1>
+
+        <form method="POST" action="{{ url_for('song_details') }}" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+
+            <div class="form-group">
+                <label for="id">Song ID:</label>
+                {{ form.id(class="form-control") }}
+            </div>
+
+            <div class="form-group">
+                <label for="title">Song Title:</label>
+                {{ form.title(class="form-control") }}
+            </div>
+
+            <div class="form-group">
+                <label for="lyrics">Lyrics:</label>
+                {{ form.lyrics(class="form-control") }}
+            </div>
+
+            <div class="form-group">
+                <label for="duration">Duration:</label>
+                {{ form.duration(class="form-control") }}
+            </div>
+
+            <div class="form-group">
+                <label for="release_date">Release Date:</label>
+                {{ form.release_date(class="form-control") }}
+            </div>
+
+            <div class="form-group">
+                <label for="audio_file">Audio File (MP3):</label>
+                {{ form.audio_file(class="form-control") }}
+            </div>
+
+            <div class="form-group">
+                <label for="song_picture">Song Picture (JPEG/PNG):</label>
+                {{ form.song_picture(class="form-control") }}
+            </div>
+
+            {{ form.submit(class="btn btn-primary") }}
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

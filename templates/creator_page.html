@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creator Page</title>
+    <!-- Add Bootstrap CSS link here if not already included -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/6ec9c7cfba.js"
+            crossorigin="anonymous">
+    </script>
+    
+</head>
+<body>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col text-right">
+                <a href="{{ url_for('user_dashboard') }}" style="color: black; text-decoration: none;">
+                    <p>
+                    <i class="fa fa-user-circle-o" style="font-size:30px;"></i>
+                </p></a>
+                <a href="{{ url_for('creator_profile', user_id=user_id) }}" style="color: black; text-decoration: none;">
+                    <p><i class="fas fa-book-open" style="font-size:30px;"></i></p>
+                </a>
+            </div>
+        </div>
+        </div>
+<div class="d-flex flex-column align-items-center justify-content-center" style="height: 100vh;">
+
+
+
+    <h1>Where Music Comes to Life: The Creator's Corner</h1>
+    <h1>CREATE, EDIT AND JAM</h1>
+    
+    <!-- Centered Circle Button with '+' Symbol -->
+    <a href="{{ url_for('song_details') }}" class="btn btn-primary rounded-circle p-3">
+        <span style="font-size: 27px;">+</span>
+    </a>
+    
+    <p class="mt-3">Kickstart your creator's journey! Add new songs</p>
+
+
+    <!-- Additional Text and Edit Button -->
+    <h1><p class="mt-5">Edit the Symphony: Remix, Rewrite, Revive!</p></h1>
+    <a href="{{ url_for('song_edit_page') }}" class="btn btn-primary mt-3">EDIT</a>
+
+    <h1><p class="mt-5">Create Albums: Where Every Track Tells a Story</p></h1>
+    <a href="/albums" class="btn btn-primary mt-3">CREATE</a>
+  </div>
+
+</body>
+</html>

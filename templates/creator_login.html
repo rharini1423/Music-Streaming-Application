@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Add Bootstrap CSS link here -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="bg-light d-flex align-items-center justify-content-center vh-100">
+    <div class="container text-center">
+        <h1 class="mb-4">Creator Login to Your Music App</h1>
+
+        <form method="POST" action="{{ url_for('creator_login') }}" class="mb-4">
+            {{ form.hidden_tag() }}
+
+            <div class="form-group">
+                {{ form.username.label(class="font-weight-bold") }}
+                {{ form.username(class="form-control", placeholder="Enter your username") }}
+            </div>
+
+            <div class="form-group">
+                {{ form.password.label(class="font-weight-bold") }}
+                {{ form.password(class="form-control", placeholder="Enter your password") }}
+            </div>
+
+            {{ form.submit(class="btn btn-primary btn-block") }}
+        </form>
+        <div class="container">
+            {% for message in get_flashed_messages() %}
+            <div class="alert alert-warning">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ message }}
+            </div>
+            {% endfor %}
+
+
+        <p class="lead"><a href="{{ url_for('register') }}">Don't have an account?</a></p>
+    </div>
+
+    <!-- Add Bootstrap JS and other dependencies here if needed -->
+    <!-- Bootstrap JS is required for certain features like dropdowns -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
